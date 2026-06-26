@@ -11,78 +11,188 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
+    <!-- Google Fonts for Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            --primary-grad: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            --accent-blue: #3b82f6;
+            --text-main: #0f172a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
         body{
             min-height:100vh;
             background:
-                linear-gradient(rgba(13,17,23,.75),rgba(13,17,23,.75)),
+                linear-gradient(rgba(15, 23, 42, 0.85), rgba(30, 27, 75, 0.85)),
                 url("https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1600");
             background-size:cover;
             background-position:center;
             background-attachment:fixed;
+            color: var(--text-main);
         }
 
-        .navbar{
-            background:rgba(255,255,255,.1);
-            backdrop-filter:blur(10px);
+        .navbar {
+            background: rgba(15, 23, 42, 0.6) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s ease;
+            padding: 18px 0;
         }
 
-        .navbar.scrolled{
-            background:#111827!important;
-            box-shadow:0 .5rem 1rem rgba(0,0,0,.15);
+        .navbar.scrolled {
+            background: #0f172a !important;
+            padding: 12px 0;
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-brand i {
+            color: var(--accent-blue);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 0.3px;
+            padding: 0.5rem 1.2rem !important;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #fff !important;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         .main-section{
             padding-top:140px;
-            padding-bottom:80px;
+            padding-bottom:90px;
         }
 
         .login-card{
-            max-width:550px;
+            max-width:500px;
             margin:auto;
             border:none;
-            border-radius:25px;
-            background:rgba(255,255,255,.96);
-            backdrop-filter:blur(20px);
-            box-shadow:0 1rem 3rem rgba(0,0,0,.3);
+            border-radius:28px;
+            background: #ffffff;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.4);
         }
 
-        .icon-circle{
-            width:100px;
-            height:100px;
-            border-radius:50%;
-            background:#0d6efd;
-            color:white;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-size:2.7rem;
-            margin:auto;
-            box-shadow:0 .5rem 1rem rgba(13,110,253,.4);
+        .icon-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 22px;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--accent-blue);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
         }
 
-        .form-control,
-        .input-group-text{
-            border-radius:15px;
+        .login-card h1 {
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #0f172a;
         }
 
-        .form-control{
-            padding:14px;
+        .form-label {
+            color: #475569;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
         }
 
-        .form-control:focus{
-            box-shadow:0 0 0 .25rem rgba(13,110,253,.15);
+        .input-group {
+            border-radius: 14px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .input-group-text {
+            background-color: transparent;
+            border: none;
+            padding-left: 18px;
+            padding-right: 10px;
+            color: #94a3b8;
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            background-color: transparent;
+            border: none;
+            padding: 14px 14px 14px 8px;
+            font-size: 0.95rem;
+            color: #0f172a;
+        }
+
+        .form-control::placeholder {
+            color: #94a3b8;
+        }
+
+        .input-group:focus-within {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+            background-color: #ffffff;
+        }
+        
+        .form-control:focus {
+            box-shadow: none;
+            background-color: transparent;
         }
 
         .btn-login{
-            padding:15px;
-            border-radius:15px;
-            font-weight:600;
-            font-size:1.1rem;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+            border: none;
+            color: #ffffff;
+            padding: 16px;
+            border-radius: 14px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
+            transition: all 0.3s ease;
         }
 
-        footer{
-            background:#111827;
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.5);
+            background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+        }
+
+        footer {
+            background: #090d16;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer h3, footer h5 {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        footer a {
+            transition: color 0.2s ease;
+        }
+
+        footer a:hover {
+            color: #fff !important;
         }
     </style>
 </head>
@@ -91,206 +201,130 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
-
         <a class="navbar-brand fw-bold fs-3" href="index.php">
-            <i class="bi bi-bicycle"></i>
-            Cit-E Cycling
+            <i class="bi bi-bicycle me-2"></i>Cit-E Cycling
         </a>
 
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="menu">
-
-            <ul class="navbar-nav ms-auto">
-
+            <ul class="navbar-nav ms-auto gap-2 mt-3 mt-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.html">
-                        Home
-                    </a>
+                    <a class="nav-link" href="index.html">Home</a>
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link" href="register_form.html">
-                        Register Interest
-                    </a>
+                    <a class="nav-link" href="register_form.html">Register Interest</a>
                 </li>
-
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">
-                        Admin Login
-                    </a>
+                    <a class="nav-link active" href="#">Admin Login</a>
                 </li>
-
             </ul>
-
         </div>
-
     </div>
 </nav>
 
 <!-- Main -->
 <section class="main-section">
-
     <div class="container">
-
         <div class="card login-card">
-
             <div class="card-body p-5">
 
                 <div class="text-center mb-5">
-
-                    <div class="icon-circle mb-4">
+                    <div class="icon-circle">
                         <i class="bi bi-shield-lock"></i>
                     </div>
-
-                    <h1 class="fw-bold">
-                        Admin Login
-                    </h1>
-
-                    <p class="text-muted">
+                    <h1>Admin Login</h1>
+                    <p class="text-muted mt-2">
                         Sign in to access the administration dashboard and manage participants.
                     </p>
-
                 </div>
 
                 <form action="login.php" method="POST">
-
                     <div class="mb-4">
-
-                        <label class="form-label fw-semibold">
-                            Username
-                        </label>
-
+                        <label class="form-label fw-semibold">Username</label>
                         <div class="input-group">
-
                             <span class="input-group-text">
                                 <i class="bi bi-person"></i>
                             </span>
-
                             <input type="text"
                                    class="form-control"
                                    name="username"
                                    placeholder="Enter username"
                                    required>
-
                         </div>
-
                     </div>
 
                     <div class="mb-4">
-
-                        <label class="form-label fw-semibold">
-                            Password
-                        </label>
-
+                        <label class="form-label fw-semibold">Password</label>
                         <div class="input-group">
-
                             <span class="input-group-text">
                                 <i class="bi bi-lock"></i>
                             </span>
-
                             <input type="password"
                                    class="form-control"
                                    name="password"
                                    placeholder="Enter password"
                                    required>
-
                         </div>
-
                     </div>
 
-                    <div class="d-grid">
-
-                        <button class="btn btn-primary btn-login">
-                            <i class="bi bi-box-arrow-in-right me-2"></i>
+                    <div class="d-grid mt-2">
+                        <button class="btn btn-primary btn-login d-inline-flex align-items-center justify-content-center gap-2">
+                            <i class="bi bi-box-arrow-in-right"></i>
                             Login
                         </button>
-
                     </div>
-
                 </form>
 
             </div>
-
         </div>
-
     </div>
-
 </section>
 
 <!-- Footer -->
 <footer class="text-white py-5">
-
-    <div class="container">
-
-        <div class="row">
-
+    <div class="container pt-4">
+        <div class="row g-4">
             <div class="col-lg-6">
-
-                <h3 class="fw-bold">
-                    <i class="bi bi-bicycle"></i>
-                    Cit-E Cycling
+                <h3 class="fw-bold mb-3">
+                    <i class="bi bi-bicycle text-primary me-2"></i>Cit-E Cycling
                 </h3>
-
-                <p class="text-secondary">
+                <p class="text-secondary pe-lg-5">
                     A modern platform for managing cycling events, registrations and administration through one integrated web portal.
                 </p>
-
             </div>
 
             <div class="col-lg-3">
-
-                <h5>Quick Links</h5>
-
+                <h5 class="text-white mb-3">Quick Links</h5>
                 <ul class="list-unstyled">
-
-                    <li class="mb-2">
-                        <a href="index.html" class="text-secondary text-decoration-none">Home</a>
-                    </li>
-
-                    <li class="mb-2">
-                        <a href="register_form.html" class="text-secondary text-decoration-none">Register Interest</a>
-                    </li>
-
-                    <li class="mb-2">
-                        <a href="#" class="text-secondary text-decoration-none">Admin Login</a>
-                    </li>
-
+                    <li class="mb-2"><a href="index.html" class="text-secondary text-decoration-none">Home</a></li>
+                    <li class="mb-2"><a href="register_form.html" class="text-secondary text-decoration-none">Register Interest</a></li>
+                    <li><a href="#" class="text-secondary text-decoration-none">Admin Login</a></li>
                 </ul>
-
             </div>
 
             <div class="col-lg-3">
-
-                <h5>Contact</h5>
-
+                <h5 class="text-white mb-3">Contact</h5>
                 <p class="text-secondary">
-                    <i class="bi bi-envelope"></i>
-                    info@citecycling.com
+                    <i class="bi bi-envelope me-2 text-primary"></i>info@citecycling.com
                 </p>
-
             </div>
-
         </div>
 
-        <hr class="border-secondary">
+        <hr class="border-secondary my-4 opacity-25">
 
-        <div class="text-center text-secondary">
+        <div class="text-center text-secondary small">
             © 2026 Cit-E Cycling Web Portal | Built with Bootstrap 5
         </div>
-
     </div>
-
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
 window.addEventListener("scroll", function () {
     const navbar = document.querySelector(".navbar");
-
     if (window.scrollY > 50) {
         navbar.classList.add("scrolled");
     } else {
