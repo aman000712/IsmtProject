@@ -27,7 +27,7 @@
         }
 
         .search-container {
-            max-width: 1100px;
+            max-width: 100%;
         }
 
         /* Card Upgrades */
@@ -44,7 +44,24 @@
             box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08);
         }
 
-        /* Form Design Enhancements */
+        .nav-pills .nav-link {
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-weight: 600;
+            color: #64748b;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-pills .nav-link#participant-tab.active {
+            background-color: var(--accent-blue);
+            color: white;
+        }
+
+        .nav-pills .nav-link#club-tab.active {
+            background-color: var(--accent-green);
+            color: white;
+        }
+
         .custom-input-group {
             border-radius: 14px;
             background-color: #f8fafc;
@@ -59,12 +76,16 @@
             background-color: #ffffff !important;
         }
 
+        .custom-input-group.green-focus:focus-within {
+            border-color: var(--accent-green) !important;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12) !important;
+        }
+
         .custom-input-group input:focus {
             box-shadow: none;
             background: transparent;
         }
 
-        /* Action Buttons */
         .btn-action-blue {
             background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
             border: none;
@@ -85,9 +106,8 @@
 </head>
 <body>
 
-<div class="container search-container py-5">
+<div class="container-fluid search-container px-4 px-md-5 py-5">
     
-    <!-- Navigation Back Link / Header Action Panel -->
     <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 mb-5">
         <div>
             <span class="text-primary fw-bold text-uppercase tracking-wider small d-block mb-1">Cit-E Cycling Registry</span>
@@ -99,12 +119,23 @@
         </a>
     </div>
 
-    <!-- Main Entry Point Row Grid Split -->
-    <div class="row g-4">
-        
-        <!-- Target Left Form Block: Individual Registration -->
-        <div class="col-lg-6">
-            <div class="card h-100 p-4 p-xl-5">
+    <ul class="nav nav-pills gap-2 mb-4" id="searchTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="participant-tab" data-bs-toggle="pill" data-bs-target="#participant-pane" type="button" role="tab" aria-controls="participant-pane" aria-selected="true">
+                <i class="bi bi-person-bounding-box me-2"></i>Search Participant
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="club-tab" data-bs-toggle="pill" data-bs-target="#club-pane" type="button" role="tab" aria-controls="club-pane" aria-selected="false">
+                <i class="bi bi-shield-shaded me-2"></i>Search Club / Team
+            </button>
+        </li>
+    </ul>
+
+    <div class="card p-4 p-xl-5">
+        <div class="tab-content" id="searchTabsContent">
+            
+            <div class="tab-pane fade show active" id="participant-pane" role="tabpanel" aria-labelledby="participant-tab" tabindex="0">
                 <div class="d-flex align-items-center gap-3 mb-4">
                     <div style="width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; background: rgba(59, 130, 246, 0.1); color: #3b82f6; font-size: 1.6rem;">
                         <i class="bi bi-person-bounding-box"></i>
@@ -115,7 +146,7 @@
                     </div>
                 </div>
 
-                <form action="search_result.php" method="POST" class="d-flex flex-column justify-content-between h-100">
+                <form action="search_result.php" method="POST">
                     <div class="mb-4">
                         <label class="form-label fw-semibold text-secondary small mb-2">Participant First Name or Surname</label>
                         <div class="input-group custom-input-group">
@@ -131,11 +162,8 @@
                     </button>
                 </form>
             </div>
-        </div>
 
-        <!-- Target Right Form Block: Club / Team Network -->
-        <div class="col-lg-6">
-            <div class="card h-100 p-4 p-xl-5">
+            <div class="tab-pane fade" id="club-pane" role="tabpanel" aria-labelledby="club-tab" tabindex="0">
                 <div class="d-flex align-items-center gap-3 mb-4">
                     <div style="width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; background: rgba(16, 185, 129, 0.1); color: #10b981; font-size: 1.6rem;">
                         <i class="bi bi-shield-shaded"></i>
@@ -146,10 +174,10 @@
                     </div>
                 </div>
 
-                <form action="search_result.php" method="POST" class="d-flex flex-column justify-content-between h-100">
+                <form action="search_result.php" method="POST">
                     <div class="mb-4">
                         <label class="form-label fw-semibold text-secondary small mb-2">Registered Club Name</label>
-                        <div class="input-group custom-input-group">
+                        <div class="input-group custom-input-group green-focus">
                             <span class="input-group-text bg-transparent border-0 ps-3 pe-2 text-muted"><i class="bi bi-building"></i></span>
                             <input type="text" class="form-control bg-transparent border-0 py-3 ps-1" name="club" placeholder="e.g., Summit Racing" required>
                         </div>
@@ -161,8 +189,8 @@
                     </button>
                 </form>
             </div>
+            
         </div>
-
     </div>
 </div>
 

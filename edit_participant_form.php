@@ -57,7 +57,7 @@
 
                     <div class="card-body p-4">
 
-                        <a href="view_participants_edit_delete.php" class="btn btn-secondary mb-4">
+                        <a href="javascript:history.back()" class="btn btn-secondary mb-4">
                             <i class="bi bi-arrow-left"></i>
                             Back
                         </a>
@@ -137,7 +137,7 @@
                                     Update Rider
                                 </button>
 
-                                <a href="view_participants.php" class="btn btn-outline-secondary flex-fill">
+                                <a href="javascript:history.back()" class="btn btn-outline-secondary flex-fill">
                                     <i class="bi bi-x-circle"></i>
                                     Cancel
                                 </a>
